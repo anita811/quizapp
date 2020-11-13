@@ -4,7 +4,7 @@ import 'package:quizapp/services/database.dart';
 import 'package:quizapp/services/score.dart';
 import 'package:quizapp/widgets/widgets.dart';
 import 'package:quizapp/widgets/quiz_play_widgets.dart';
-//import 'package:quizapp/views/home.dart';
+
 class QuestionModel {
   String question;
   String option1;

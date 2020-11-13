@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/screens/Signup/signup_screen.dart';
+import 'package:quizapp/views/home.dart';
 import '../../constants.dart';
-import '../home.dart';
+
 import 'background.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -73,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                            context,
                            MaterialPageRoute(
                              builder: (context) {
-                               return HomeScreen();
+                               return MyHomePage();
                              },
                            ),
                          );
