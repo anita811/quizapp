@@ -66,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                        ),
-                         DropdownList(),
+
                       RoundedButton(
                        text: "LOGIN",
                        press: () {
@@ -98,48 +98,6 @@ class _LoginScreenState extends State<LoginScreen> {
              ),
            ),
         ),
-    );
-  }
-}
-
-class DropdownList extends StatefulWidget {
-  DropdownList({Key key}) : super(key: key);
-
-  @override
-  _DropdownListState createState() => _DropdownListState();
-}
-
-class _DropdownListState extends State<DropdownList> {
-  String dropdownValue = 'Student';
-
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      width: size.width * 0.8,
-      decoration: BoxDecoration(
-          color: kPrimaryLightColor,
-          borderRadius: BorderRadius.circular(29)
-      ),
-      child: DropdownButton<String>(
-        value: dropdownValue,
-        iconSize: 24,
-        elevation: 50,
-        onChanged: (String newValue) {
-          setState(() {
-            dropdownValue = newValue;
-          });
-        },
-        items: <String>['Admin','Student']
-            .map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(value),
-          );
-        }).toList(),
-      ),
     );
   }
 }
