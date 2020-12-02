@@ -136,7 +136,7 @@ class _AddQuestionState extends State<AddQuestion> {
                 children: [
                   GestureDetector(
                     onTap: () {
-
+                      uploadQuizData();
                       Navigator.pop(context);
 
                     },

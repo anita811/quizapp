@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
 class QuizTile extends StatelessWidget {
   final String quizTitle, quizDesc, department, difficulty, quizId;
   final int noOfQuestions;
-
+  DatabaseService databaseService = new DatabaseService();
   QuizTile(
       { @required this.quizTitle,
         @required this.quizDesc,
@@ -91,7 +91,49 @@ class QuizTile extends StatelessWidget {
         @required this.noOfQuestions
       }
       );
+   deleteQuiz(){
+     Map<String, String> quizData = {
+       "quizTitle" : quizTitle,
+       "quizDesc" : quizDesc,
+       "department":department,
+       "difficulty":difficulty,
+       "quizId":quizId
+     };
 
+     databaseService.delQuizData(quizData, quizId);
+   }
+  showAlertDialog(BuildContext context) {
+    // set up the buttons
+    Widget cancelButton = FlatButton(
+      child: Text("Cancel"),
+      onPressed:  () {
+        Navigator.of(context).pop();
+      },
+    );
+    Widget continueButton = FlatButton(
+      textColor: Colors.red[300],
+      child: Text("Delete",),
+      onPressed:  () {
+        deleteQuiz();
+      },
+    );
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Are you sure ?"),
+      content: Text("Are you sure to delete the quiz"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -99,6 +141,11 @@ class QuizTile extends StatelessWidget {
         Navigator.push(context, MaterialPageRoute(
             builder: (context) => QuizPlay(quizId)
         ));
+      },
+
+      onLongPress: (){
+        showAlertDialog(context);
+
       },
       child: Container(
         margin:EdgeInsets.only(bottom: 8),

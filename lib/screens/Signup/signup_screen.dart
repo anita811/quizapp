@@ -147,7 +147,7 @@ class _DropdownListState extends State<DropdownList> {
             dropdownValue = newValue;
           });
         },
-        items: <String>['Faculty','Student']
+        items: <String>['Admin','Faculty','Student']
             .map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
             value: value,

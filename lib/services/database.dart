@@ -13,6 +13,14 @@ class DatabaseService {
     });
   }
 
+  Future<void> delQuizData(Map quizData, String quizId) async {
+    await Firebase.initializeApp();
+    await FirebaseFirestore.instance
+        .collection("quiz")
+        .doc(quizId)
+        .delete();
+  }
+
   Future<void> addQuestionData(quizData, String quizId) async {
     await Firebase.initializeApp();
     await FirebaseFirestore.instance
